@@ -6,13 +6,13 @@ class Details extends Component {
         this.state={
             contacts:[]
         }
-        function componentDidMount() {
-            axios.get('/api/details').then(response =>{
-                this.setState({
-                    contacts:response.data
-                })
-            }).catch(err=>console.log(err));
-        }
+    }
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/api/contacts').then(response =>{
+            this.setState({
+                contacts:response.data
+            })
+        }).catch(err=>console.log(err));
     }
     render() {
         return (
@@ -21,24 +21,22 @@ class Details extends Component {
                     <thead>
                     <tr>
                         <th scope="col">Type</th>
-                        <th scope="col">Column heading</th>
-                        <th scope="col">Column heading</th>
-                        <th scope="col">Column heading</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Created_at</th>
+                        <th scope="col">Updated_at</th>
                     </tr>
                     </thead>
                     <tbody>
                         {this.state.contacts !==null
                             ? this.state.contacts.map(contact=>(
                                 <tr className="table-primary">
-                                    <th scope="row" key={contact.id}>Primary</th>
-                                    <td>{contact.name}</td>
-                                    <td>{contact.email}</td>
-                                    <td>C{contact.phone}</td>
-                                    <table className="table-primary">
-                                        <tr>
-                                            <td>Hello details componet</td>
-                                        </tr>
-                                    </table>
+                                    <th scope="row" key={contact.id}>{contact.id}</th>
+                                    <td>{contact.fulname}</td>
+                                    <td>{contact.emaiil}</td>
+                                    <td>{contact.phone}</td>
+                                    <td>{contact.created_at}</td>
+                                    <td>{contact.updated_at}</td>
                                 </tr>
                             ))
                             :   <table className="table-primary">

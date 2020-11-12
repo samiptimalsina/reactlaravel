@@ -16,7 +16,7 @@ class ContactController extends Controller
     {
         //
         $contact=Contact::all();
-
+return $contact;
        return response()->json($contact);
     }
 

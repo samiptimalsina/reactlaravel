@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-Route::get('/details{reactRoutes}','ContactController@index');
-Route::post('/contacts-create','ContactController@create');
-Route::get('/contacts-edit/{id}','ContactController@edit');
-Route::post('/contacts-update/{id}','ContactController@update');
-Route::get('/contacts-delete/{id}','ContactController@destroy');
+Route::apiResource('/contacts','ContactController');
+//Route::post('/contacts-create','ContactController@create');
+//Route::get('/contacts-edit/{id}','ContactController@edit');
+//Route::post('/contacts-update/{id}','ContactController@update');
+//Route::get('/contacts-delete/{id}','ContactController@destroy');
