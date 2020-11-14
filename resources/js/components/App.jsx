@@ -4,12 +4,14 @@ import ProductList from "./dummy/ProductList";
 import Details from "./Details";
 import Default from "./Default";
 import Cart from "./dummy/Cart";
+import Addcontact from "./dummy/Addcontact";
 const App=()=>{
     return (
         <>
         <BrowserRouter>
            <Switch>
                <Route exact path='/' component={Details}/>
+               <Route exact path='/add' component={Addcontact}/>
                <Route exact path='/contacts' component={Details}/>
                <Route exact path='/cart' component={Cart}/>
                <Route exact path='/default' component={Default}/>

@@ -35,9 +35,9 @@ return $contact;
         ]);
         if($customer_info){
             $contact=new Contact();
-            $contact->name=$request->input('name');
-            $contact->name=$request->input('email');
-            $contact->name=$request->input('phone');
+            $contact->fullname=$request->input('name');
+            $contact->email=$request->input('email');
+            $contact->phone=$request->input('number');
             $contact->save();
             return response()->json($contact);
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {Link,} from 'react-router-dom';
 class Details extends Component {
     constructor(props) {
         super(props);
@@ -8,35 +8,43 @@ class Details extends Component {
         }
     }
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/api/contacts').then(response =>{
+        axios.get('/api/contacts').then(response =>{
             this.setState({
                 contacts:response.data
             })
         }).catch(err=>console.log(err));
     }
+
     render() {
         return (
             <div>
-                <table className="table table-hover">
+                <table className="table table-hover"  style={{overflowX: "scroll"}}>
                     <thead>
                     <tr>
                         <th scope="col">Type</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Contact no</th>
                         <th scope="col">Created_at</th>
                         <th scope="col">Updated_at</th>
+                        <th scope="col">Action <Link to="/add" className="btn btn-primary">Add</Link></th>
                     </tr>
                     </thead>
                     <tbody>
                         {this.state.contacts !==null
                             ? this.state.contacts.map(contact=>(
-                                <tr className="table-primary">
-                                    <th scope="row" key={contact.id}>{contact.id}</th>
-                                    <td>{contact.fulname}</td>
-                                    <td>{contact.emaiil}</td>
+
+                                <tr className="table-primary" key={contact.id}>
+                                    <th scope="row" >{contact.id}</th>
+                                    <td>{contact.fullname}</td>
+                                    <td>{contact.email}</td>
                                     <td>{contact.phone}</td>
                                     <td>{contact.created_at}</td>
                                     <td>{contact.updated_at}</td>
+                                    <td>
+                                        <button className='btn btn-danger'>Delete</button>
+                                        <button className='btn btn-info'>Edit</button>
+                                    </td>
                                 </tr>
                             ))
                             :   <table className="table-primary">
