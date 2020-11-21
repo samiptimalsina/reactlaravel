@@ -15,24 +15,26 @@ class Addcontact extends Component {
     }
     handleFormSubmit(event){
         event.preventDefault()
-        axios.post('/api/contacts-create',{
+        const formData={
             name:this.state.name,
             email:this.state.email,
             phone:this.state.phone,
-        }).then(response=>{
-            this.setState({
-                name:'',
-                email:'',
-                phone:'',
-            })
+        }
+
+        axios.post('http://127.0.0.1:8000/api/contacts',formData
+        ).then( (response)=>{
+            console .log(response);
+
             this.props.history.push('/');
 
+
         }).catch(err=> console.log(err));
-        // console.log(this.state);
+
     }
     handleNameInputChange(event) {
         this.setState({
             name:event.target.value
+
         })
 
     }

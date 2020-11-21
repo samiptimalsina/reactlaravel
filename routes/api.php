@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 //Route::apiResource('/contacts','ContactController');
+//Route::apiResource('/contacts','ContactController@store');
 Route::get('/contacts','ContactController@index');
-Route::post('/contacts-create','ContactController@create');
+Route::post('/contacts','ContactController@store');
+
+//Route::post('/category','ContactController@create');
 //Route::get('/contacts-edit/{id}','ContactController@edit');
 //Route::post('/contacts-update/{id}','ContactController@update');
 //Route::get('/contacts-delete/{id}','ContactController@destroy');

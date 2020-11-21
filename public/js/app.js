@@ -69872,6 +69872,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Default__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Default */ "./resources/js/components/Default.jsx");
 /* harmony import */ var _dummy_Cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dummy/Cart */ "./resources/js/components/dummy/Cart.jsx");
 /* harmony import */ var _dummy_Addcontact__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dummy/Addcontact */ "./resources/js/components/dummy/Addcontact.jsx");
+/* harmony import */ var _dummy_Category__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dummy/Category */ "./resources/js/components/dummy/Category.jsx");
+
 
 
 
@@ -69905,6 +69907,10 @@ var App = function App() {
     exact: true,
     path: "/product",
     component: _dummy_ProductList__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/category",
+    component: _dummy_Category__WEBPACK_IMPORTED_MODULE_7__["default"]
   }))));
 };
 
@@ -70427,21 +70433,18 @@ var Addcontact = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       event.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/contacts-create', {
+      var formData = {
         name: this.state.name,
         email: this.state.email,
         phone: this.state.phone
-      }).then(function (response) {
-        _this2.setState({
-          name: '',
-          email: '',
-          phone: ''
-        });
+      };
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/api/contacts', formData).then(function (response) {
+        console.log(response);
 
         _this2.props.history.push('/');
       })["catch"](function (err) {
         return console.log(err);
-      }); // console.log(this.state);
+      });
     }
   }, {
     key: "handleNameInputChange",
@@ -70594,6 +70597,102 @@ var Cart = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Cart);
+
+/***/ }),
+
+/***/ "./resources/js/components/dummy/Category.jsx":
+/*!****************************************************!*\
+  !*** ./resources/js/components/dummy/Category.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Category = /*#__PURE__*/function (_Component) {
+  _inherits(Category, _Component);
+
+  var _super = _createSuper(Category);
+
+  function Category() {
+    var _this;
+
+    _classCallCheck(this, Category);
+
+    _this = _super.call(this);
+    _this.nameChangeState = _this.nameChangeState.bind(_assertThisInitialized(_this));
+    _this.handleFormSubmit = _this.handleFormSubmit.bind(_assertThisInitialized(_this));
+
+    _this.state({
+      category_name: ''
+    });
+
+    return _this;
+  }
+
+  _createClass(Category, [{
+    key: "nameChangeState",
+    value: function nameChangeState(event) {
+      this.state(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleFormSubmit",
+    value: function handleFormSubmit(event) {
+      event.preventDefault();
+      var categoryName = {
+        category_name: this.state.category_name
+      };
+      axios.post('http://127.0.0.1/api/category', categoryName).then(function (response) {
+        console.log(response.data);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var category_name = this.state.category_name;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleFormSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "name",
+        value: this.state.name,
+        onChange: this.nameChangeState
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Category page"));
+    }
+  }]);
+
+  return Category;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Category);
 
 /***/ }),
 

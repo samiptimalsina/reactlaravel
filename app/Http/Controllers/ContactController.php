@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Contact;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
+use Throwable;
 
 class ContactController extends Controller
 {
@@ -16,33 +20,41 @@ class ContactController extends Controller
     {
         //
         $contact=Contact::all();
-return $contact;
+
        return response()->json($contact);
+    }
+    public function create(Request $request){
+
+        $category=new Category();
+        $category->name=$request->name;
+        $category->save();
+
+
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return bool|\Illuminate\Http\JsonResponse
      */
-    public function create( Request $request)
+    public function store(Request $request)
     {
         //
-        $customer_info = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:posts|max:255',
-            'phone'=>'required',
-        ]);
-        if($customer_info){
+        try {
             $contact=new Contact();
-            $contact->fullname=$request->input('name');
-            $contact->email=$request->input('email');
-            $contact->phone=$request->input('number');
+            $contact->fullname=$request->name;
+            $contact->email=$request->email;
+            $contact->phone=$request->phone;
             $contact->save();
             return response()->json($contact);
+        }catch (Throwable $e) {
+            report($e);
 
-
+            return false;
         }
+
+
+
 
     }
 
@@ -52,10 +64,10 @@ return $contact;
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+//    public function store(Request $request)
+//    {
+//        //
+//    }
 
     /**
      * Display the specified resource.

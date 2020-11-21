@@ -5,6 +5,7 @@ import Details from "./Details";
 import Default from "./Default";
 import Cart from "./dummy/Cart";
 import Addcontact from "./dummy/Addcontact";
+import Category from "./dummy/Category";
 const App=()=>{
     return (
         <>
@@ -16,6 +17,7 @@ const App=()=>{
                <Route exact path='/cart' component={Cart}/>
                <Route exact path='/default' component={Default}/>
                <Route exact path='/product' component={ProductList}/>
+               <Route exact path='/category' component={Category}/>
            </Switch>
         </BrowserRouter>
         {/*<Header/>*/}
