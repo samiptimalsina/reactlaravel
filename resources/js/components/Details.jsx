@@ -15,6 +15,12 @@ class Details extends Component {
         }).catch(err=>console.log(err));
     }
 
+    editContact(contactId){
+    console.log('clicke');
+
+    }
+
+
     render() {
         return (
             <div>
@@ -42,8 +48,8 @@ class Details extends Component {
                                     <td>{contact.created_at}</td>
                                     <td>{contact.updated_at}</td>
                                     <td>
-                                        <button className='btn btn-danger'>Delete</button>
-                                        <button className='btn btn-info'>Edit</button>
+                                        <Link to={`/contact/delete/${contact.id}`} className="btn btn-danger">Delete</Link>
+                                        <Link to={`/contact/edit/${contact.id}`}className="btn btn-info"> Edit</Link>
                                     </td>
                                 </tr>
                             ))

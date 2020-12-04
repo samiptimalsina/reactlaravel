@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 //Route::apiResource('/contacts','ContactController@store');
 Route::get('/contacts','ContactController@index');
 Route::post('/contacts','ContactController@store');
+Route::get('contact/edit/{id}','ContactController@edit');
+Route::put('contact/edit/{id}','ContactController@update');
 
 //Route::post('/category','ContactController@create');
 //Route::get('/contacts-edit/{id}','ContactController@edit');

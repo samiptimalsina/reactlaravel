@@ -23,6 +23,10 @@ class ContactController extends Controller
 
        return response()->json($contact);
     }
+
+
+
+
     public function create(Request $request){
 
         $category=new Category();
@@ -87,21 +91,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$id)
+    public function edit( $id)
     {
         //
-        $customer_info = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:posts|max:255',
-            'phone'=>'required',
-        ]);
-
-      $contact=Contact::find(id);
-       $contact=new Contact();
-       $contact->fullname=$request->input('name');
-        $contact->fullname=$request->input('email');
-        $contact->fullname=$request->input('phone');
-        $contact->update()->where('id',$id);
+      $contact=Contact::find($id);
+      return response()->json($contact);
 
 
     }
@@ -115,7 +109,19 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $contact=Contact::find(id);
+
+            $contact->fullname=$request->name;
+            $contact->email=$request->email;
+            $contact->phone=$request->phone;
+            $contact->update()->where('id',$id);
+            return response()->json($contact);
+        }catch (Throwable $e) {
+            report($e);
+
+            return false;
+        }
     }
 
     /**
